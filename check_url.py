@@ -24,6 +24,7 @@ class Put(threading.Thread):
     def __init__(self,file):
         self.file = file
         super(Put,self).__init__()
+	self.setDaemon(True)
 
     def run(self):
 	global in_queue
@@ -43,6 +44,7 @@ class Get(threading.Thread):
     def __init__(self,i):
 	self.i = i
 	super(Get,self).__init__()
+	self.setDaemon(True)
 
     def run(self):
 	global in_queue,out_queue
@@ -78,6 +80,7 @@ class Parse(threading.Thread):
     is_stop = False
     def __init__(self):
         super(Parse,self).__init__()
+	self.setDaemon(True)
 
     def run(self):
 	global out_queue
@@ -98,7 +101,7 @@ class Parse(threading.Thread):
 def parse_args():
     parser = optparse.OptionParser("Usage: %prog [options]")
     parser.add_option("-f","--file",dest="file",default="check_url.txt",help="The url list file which we will use to check.")
-    parser.add_option("-t",type="int",dest="t",default="60",help="How long we will check.")
+    parser.add_option("-t",type="int",dest="t",default="5",help="How long we will check.")
     parser.add_option("-v","--verbose",action="store_true",dest="verbose",default=False,help="Output verbose infomations.")
 
     (options, args) = parser.parse_args()
@@ -132,15 +135,21 @@ def main():
 	parse = Parse()
         parse.start()
         parse_threads.append(parse)
-   
-    print get_threads,parse_threads
-    print t
-    time.sleep(t)
-    put.stop()
-    [ t.stop() for t in get_threads ]
-    [ t.stop() for t in parse_threads ]
-    time.sleep(5)
-    print "Master Thread: exit ......"
+  
+    try:	 
+        print get_threads,parse_threads
+        print t
+        time.sleep(t)
+        put.stop()
+        [ t.stop() for t in get_threads ]
+        [ t.stop() for t in parse_threads ]
+        time.sleep(5)
+        print "Master Thread: exit ......"
+    except KeyboardInterrupt:
+	put.stop()
+        [ t.stop() for t in get_threads ]
+        [ t.stop() for t in parse_threads ]
+	print "Ctrl + c: exit ......"
 
 if __name__ == "__main__":
     main()
