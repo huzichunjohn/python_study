@@ -1,4 +1,8 @@
 git:
 http://nvie.com/posts/a-successful-git-branching-model/
+git flow
+
+log
+http://kibana.org/
 
 travis ci
