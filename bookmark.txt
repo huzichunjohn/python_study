@@ -12,4 +12,14 @@ http://www.chenqing.org/category/web-front
 http://www.subcide.com/articles/creating-a-css-layout-from-scratch/P8/
 http://net.tutsplus.com/tutorials/site-builds/from-psd-to-html-building-a-set-of-website-designs-step-by-step/
 
+http://jy.shangxueba.com/121642.html
+
+tts
+Text-to-Speech Synthesis
+
+http://www.jcmartin.org/ ebay
+
+http://gnosis.cx/TPiP/   Text Processing in Python
+
+
 
