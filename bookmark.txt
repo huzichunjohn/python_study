@@ -23,3 +23,8 @@ http://gnosis.cx/TPiP/   Text Processing in Python
 
 http://doughellmann.com/ python
 
+https://github.com/Mayflower puppet
+
+http://doughellmann.com/2012/03/preparing-my-first-patch-for-openstack.html
+
+http://blog.digitalstruct.com/2011/12/21/rpm-packaging-building-and-deploying-your-own-php/
